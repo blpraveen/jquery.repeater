@@ -1,3 +1,7 @@
+## Installation
+
+`npm install jquery-repeater-form --save`
+
 ## Templates
 
 Repeater uses the first "data-repeater-item" as a template for added items.
