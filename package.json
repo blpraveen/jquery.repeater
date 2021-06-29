@@ -6,6 +6,13 @@
   "bugs": {
     "url": "https://github.com/blpraveen/jquery.repeater/issues"
   },
+  "scripts": {
+    "minifyJS": "uglifyjs jquery.repeater.js --compress --mangle --warn --output jquery.repeater.min.js",
+    "production": "npm run version:bump --silent && rm -f jquery.repeater.min.js && npm run minifyJS --silent && npm run version:add --silent",
+    "version:add": "echo \"/*! Jquery Repeater!!!!1!11! v - $(npm run version:extract --silent)n * © Someone probably n * Build time: $(date '+%m-%d-%Y %H:%M:%S')n */n$(cat jquery.repeater.min.js)\" > jquery.repeater.min.js",
+    "version:bump": "npm version patch --no-git-tag-version --silent",
+    "version:extract": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/blpraveen/jquery.repeater"
@@ -17,5 +24,9 @@
     "repeater"
   ],
   "author": "B L Praveen",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "uglify-js": "^3.13.10"
+  }
 }
